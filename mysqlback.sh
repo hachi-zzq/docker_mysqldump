@@ -8,7 +8,7 @@ mysql_port=$MYSQL_PORT
 
 
 #当前日期
-date=$(date -d '+0 days' +%Y%m%d)
+date=$(date +"%Y%m%d%H%M%S")
 
 #sql备份目录
 back_dir="/opt/backup"
@@ -20,11 +20,11 @@ if [ ! -d $back_date_dir ]; then
 fi
 
 #备份的数据库数组
-db_arr=$(echo "show databases;" | mysql -u$mysql_user -p$mysql_passwd -h$mysql_host -p$mysql_port)
+db_arr=$(echo "show databases;" | mysql -u$mysql_user -p$mysql_passwd -h$mysql_host -P$mysql_port)
 #不需要备份的单例数据库
 
 
-zipname="enstar_bak_"$date".tar.bz"
+zipname=$date".tar.bz"
 
 
 #2.进入到备份目录
