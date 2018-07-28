@@ -2,7 +2,9 @@ FROM alpine:3.6
 
 MAINTAINER hachi.zzq@gmail.com
 
-RUN apk add --no-cache mysql-client
+RUN apk update && apk add curl bash tree tzdata \
+&& cp -r -f /usr/share/zoneinfo/Hongkong /etc/localtime \
+&& apk add --no-cache mysql-client
 
 RUN mkdir -p /opt/backup
 
