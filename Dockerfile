@@ -10,7 +10,9 @@ RUN mkdir -p /opt/backup
 
 VOLUME ["/opt/backup"]
 
-COPY mysqlback.sh /etc/periodic/daily
+COPY mysqlback.sh /etc/periodic/daily/mysqlback
+
+RUN chmod a+x /etc/periodic/daily/mysqlback
 
 ENTRYPOINT ["crond", "-f"]
 
